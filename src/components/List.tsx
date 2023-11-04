@@ -25,8 +25,8 @@ export default function List() {
 
   return (
     <ul className="prose dark:prose-invert pt-4">
-      {listData.data.map((item: SearchItemState) => (
-        <li key={item.id}>{item.name}</li>
+      {listData.data.map((item: SearchItemState, index: number) => (
+        <li key={index}>{item.name}</li>
       ))}
     </ul>
   );

@@ -1,5 +1,5 @@
 import { call, debounce, delay, put, spawn } from "redux-saga/effects";
-import { Actions } from "@/redux/sagas/actions";
+import { SataActions } from "@/redux/sagas/sataActions";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { SearchItemState } from "@/redux/search/sliceStateTypes";
 import {
@@ -41,5 +41,5 @@ function* fetchData(action: PayloadAction<string>) {
 }
 
 function* searchSkills() {
-  yield debounce(350, Actions.CHANGE_SEARCH_FIELD, fetchData);
+  yield debounce(350, SataActions.CHANGE_SEARCH_FIELD, fetchData);
 }
