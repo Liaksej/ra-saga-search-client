@@ -12,17 +12,24 @@ export default function* rootSaga() {
   yield spawn(searchSkills);
 }
 
+let controller: AbortController;
+
 function* fetchData(action: PayloadAction<string>) {
   if (action.payload === "") {
     yield put(updateSearchResult([]));
     return;
   }
+
+  if (controller) controller.abort();
+  controller = new AbortController();
+
   for (let attempt = 0; attempt < 5; attempt++) {
     try {
       yield put(dataLoading());
       const response: Response = yield call(
         fetch,
         `http://localhost:7070/api/search?q=${action.payload}`,
+        { signal: controller.signal },
       );
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -31,6 +38,9 @@ function* fetchData(action: PayloadAction<string>) {
       yield put(updateSearchResult(data));
       return;
     } catch (error: unknown) {
+      if ((error as Error).name === "AbortError") {
+        return;
+      }
       if (attempt === 4) {
         yield put(searchSkillsFailure(error));
       } else {

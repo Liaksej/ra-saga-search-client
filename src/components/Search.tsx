@@ -24,7 +24,7 @@ export default function Search() {
         placeholder="Search..."
       />
       <CloseIcon
-        className="absolute right-2 top-[0.7rem] rounded-full dark:invert cursor-pointer"
+        className="absolute right-2 top-[0.7rem] rounded-full dark:invert cursor-pointer text-gray-400"
         onClick={() => clearHandler()}
         fontSize="small"
       />

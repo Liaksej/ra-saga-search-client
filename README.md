@@ -1,8 +1,6 @@
 ## ra-saga-search
 
----
-
-[![Build status](https://ci.appveyor.com/api/projects/status/1c7gh139uh9wo611?svg=true)](https://ci.appveyor.com/project/Liaksej/ra-forms-steps)
+![GitHub deployments](https://img.shields.io/github/deployments/liaksej/ra-saga-search-client/production?style=flat&logo=vercel&logoColor=white&label=vercel)
 
 
 https://ra-saga-search-client.vercel.app
